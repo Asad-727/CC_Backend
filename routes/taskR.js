@@ -16,7 +16,7 @@ import { adminOnly } from "../middleware/role.js";
 const router = express.Router();
 
 
-// =========================
+
 // ADMIN TASK ROUTES
 // =========================
 
@@ -49,7 +49,7 @@ router.delete(
 );
 
 
-// =========================
+
 // EMPLOYEE TASK ROUTES
 // =========================
 

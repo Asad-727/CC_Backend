@@ -1,5 +1,5 @@
-
-import Employee from "../models/employeeM.js";
+import Employee from "../models/employeeM.js"; 
+import User from "../models/loginM.js"; 
 import bcrypt from "bcryptjs";
 
 export const createEmployee = async (req, res) => {
@@ -38,20 +38,30 @@ export const createEmployee = async (req, res) => {
       });
     }
 
-    // Check existing username
-    const existingUsername = await Employee.findOne({ username });
+    // Check username in User collection
+    const existingUser = await User.findOne({ username });
 
-    if (existingUsername) {
+    if (existingUser) {
       return res.status(400).json({
         success: false,
         message: "Username already exists"
       });
     }
 
-    // Check existing email
-    const existingEmail = await Employee.findOne({ email });
+    // Check username in Employee collection
+    const existingEmployeeUsername = await Employee.findOne({ username });
 
-    if (existingEmail) {
+    if (existingEmployeeUsername) {
+      return res.status(400).json({
+        success: false,
+        message: "Employee username already exists"
+      });
+    }
+
+    // Check email in Employee collection
+    const existingEmployeeEmail = await Employee.findOne({ email });
+
+    if (existingEmployeeEmail) {
       return res.status(400).json({
         success: false,
         message: "Email already exists"
@@ -61,30 +71,45 @@ export const createEmployee = async (req, res) => {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create employee
-    const employee = await Employee.create({
-      fullName,
+    // Create login User
+    const user = await User.create({
       username,
-      email,
-      address,
-      phoneNumber,
       password: hashedPassword,
-      role,
-      department,
-      designation,
-      joiningDate,
-      basicSalary
+      role: "employee"
     });
 
-    // Remove password from response
-    const employeeResponse = employee.toObject();
-    delete employeeResponse.password;
+    try {
+      // Create Employee and connect it with User
+      const employee = await Employee.create({
+        user: user._id,
+        fullName,
+        username,
+        email,
+        address,
+        phoneNumber,
+        password: hashedPassword,
+        role,
+        department,
+        designation,
+        joiningDate,
+        basicSalary
+      });
 
-    return res.status(201).json({
-      success: true,
-      message: "Employee created successfully",
-      data: employeeResponse
-    });
+      // Remove password from response
+      const employeeResponse = employee.toObject();
+      delete employeeResponse.password;
+
+      return res.status(201).json({
+        success: true,
+        message: "Employee created successfully",
+        data: employeeResponse
+      });
+    } catch (employeeError) {
+      // If Employee creation fails, remove created User
+      await User.findByIdAndDelete(user._id);
+
+      throw employeeError;
+    }
   } catch (error) {
     return res.status(500).json({
       success: false,

@@ -1,9 +1,8 @@
 import Task from "../models/taskM.js";
 
 
-// =========================
-// ASSIGN TASK - ADMIN
-// =========================
+
+// ASSIGN TASK - ADMIN 
 
 const assignTask = async (req, res) => {
     try {
@@ -59,9 +58,9 @@ const assignTask = async (req, res) => {
 };
 
 
-// =========================
+
 // GET ALL TASKS - ADMIN
-// =========================
+
 
 const getAllTasks = async (req, res) => {
     try {
@@ -98,9 +97,9 @@ const getAllTasks = async (req, res) => {
 };
 
 
-// =========================
+
 // ADMIN TASK COUNTS
-// =========================
+
 
 const getAllTaskCounts = async (req, res) => {
     try {
@@ -137,9 +136,9 @@ const getAllTaskCounts = async (req, res) => {
 };
 
 
-// =========================
+
 // MY TASKS - EMPLOYEE
-// =========================
+
 
 const getMyTasks = async (req, res) => {
     try {
@@ -182,9 +181,8 @@ const getMyTasks = async (req, res) => {
 };
 
 
-// =========================
-// MY TASK COUNTS - EMPLOYEE
-// =========================
+
+// MY TASK COUNTS - EMPLOYEE 
 
 const getMyTaskCounts = async (req, res) => {
     try {
@@ -238,9 +236,8 @@ const getMyTaskCounts = async (req, res) => {
 };
 
 
-// =========================
-// UPDATE MY TASK STATUS
-// =========================
+
+// UPDATE MY TASK STATUS 
 
 const updateTaskStatus = async (req, res) => {
     try {
@@ -297,9 +294,8 @@ const updateTaskStatus = async (req, res) => {
 };
 
 
-// =========================
-// DELETE TASK - ADMIN
-// =========================
+
+// DELETE TASK - ADMIN 
 
 const deleteTask = async (req, res) => {
     try {

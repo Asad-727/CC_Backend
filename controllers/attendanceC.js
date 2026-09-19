@@ -2,9 +2,9 @@ import Attendance from "../models/attendanceM.js";
 import * as XLSX from "xlsx";
 
 
-// =========================
+
 // HELPER FUNCTIONS
-// =========================
+
 
 const getDayRange = () => {
     const start = new Date();
@@ -32,9 +32,9 @@ const calculateHours = (checkIn, checkOut) => {
 };
 
 
-// =========================
+
 // CHECK IN
-// =========================
+
 
 const checkIn = async (req, res) => {
     try {
@@ -79,9 +79,8 @@ const checkIn = async (req, res) => {
 };
 
 
-// =========================
-// CHECK OUT
-// =========================
+
+// CHECK OUT 
 
 const checkOut = async (req, res) => {
     try {
@@ -141,9 +140,8 @@ const checkOut = async (req, res) => {
 };
 
 
-// =========================
-// GET MY ATTENDANCE
-// =========================
+
+// GET MY ATTENDANCE 
 
 const getMyAttendance = async (req, res) => {
     try {
@@ -197,9 +195,8 @@ const getMyAttendance = async (req, res) => {
 };
 
 
-// =========================
-// ATTENDANCE SUMMARY
-// =========================
+
+// ATTENDANCE SUMMARY 
 
 const getAttendanceSummary = async (req, res) => {
     try {
@@ -281,9 +278,8 @@ const getAttendanceSummary = async (req, res) => {
 };
 
 
-// =========================
-// ATTENDANCE CALENDAR
-// =========================
+
+// ATTENDANCE CALENDAR 
 
 const getAttendanceCalendar = async (req, res) => {
     try {
@@ -344,9 +340,8 @@ const getAttendanceCalendar = async (req, res) => {
 };
 
 
-// =========================
-// DAILY DETAILS LOG
-// =========================
+
+// DAILY DETAILS LOG 
 
 const getDailyDetails = async (req, res) => {
     try {
@@ -405,9 +400,8 @@ const getDailyDetails = async (req, res) => {
 };
 
 
-// =========================
-// EXPORT ATTENDANCE TO EXCEL
-// =========================
+
+// EXPORT ATTENDANCE TO EXCEL 
 
 const exportAttendance = async (req, res) => {
     try {
@@ -503,9 +497,8 @@ const exportAttendance = async (req, res) => {
 };
 
 
-// =========================
-// ADMIN - GET ALL ATTENDANCE
-// =========================
+
+// ADMIN - GET ALL ATTENDANCE 
 
 const getAllAttendance = async (req, res) => {
     try {

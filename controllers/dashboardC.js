@@ -5,9 +5,8 @@ import Attendance from "../models/attendanceM.js";
 import Leave from "../models/leaveM.js";
 
 
-// =========================
-// ADMIN DASHBOARD
-// =========================
+
+// ADMIN DASHBOARD 
 
 const getAdminDashboard = async (req, res) => {
     try {
@@ -115,9 +114,8 @@ const getAdminDashboard = async (req, res) => {
 };
 
 
-// =========================
-// EMPLOYEE DASHBOARD
-// =========================
+
+// EMPLOYEE DASHBOARD 
 
 const getEmployeeDashboard = async (req, res) => {
     try {

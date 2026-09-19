@@ -4,7 +4,7 @@ import Leave from "../models/leaveM.js";
 import User from "../models/loginM.js";
 
 
-// ==================== EMPLOYEE ====================
+// EMPLOYEE 
 
 // Apply Leave
 export const applyLeave = async (req, res) => {
@@ -205,7 +205,7 @@ export const cancelLeave = async (req, res) => {
 };
 
 
-// ==================== ADMIN ====================
+//  ADMIN 
 
 // Get All Employee Leaves
 export const getAllLeaves = async (req, res) => {

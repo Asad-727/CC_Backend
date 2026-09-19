@@ -1,4 +1,3 @@
-// models/chatChannelM.js
 
 import mongoose from "mongoose";
 

@@ -1,5 +1,4 @@
-// routes/chatR.js
-
+ 
 import express from "express";
 
 import {
@@ -24,7 +23,7 @@ import { adminOnly } from "../middleware/role.js";
 const router = express.Router();
 
 
-// ==================== CHANNELS ====================
+//  CHANNELS 
 
 // Admin creates channel
 router.post(
@@ -73,7 +72,7 @@ router.delete(
 );
 
 
-// ==================== CHANNEL MESSAGES ====================
+//  CHANNEL MESSAGES 
 
 // Send message in channel
 router.post(
@@ -90,7 +89,7 @@ router.get(
 );
 
 
-// ==================== DIRECT MESSAGES ====================
+//  DIRECT MESSAGES 
 
 // Get users for DM
 router.get(
@@ -114,7 +113,7 @@ router.get(
 );
 
 
-// ==================== MESSAGE ACTIONS ====================
+//  MESSAGE ACTIONS
 
 // Pin / Unpin
 router.put(

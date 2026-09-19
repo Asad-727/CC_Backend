@@ -1,5 +1,4 @@
-// routes/leaveR.js
-
+ 
 import express from "express";
 
 import {
@@ -20,7 +19,7 @@ import { adminOnly } from "../middleware/role.js";
 const router = express.Router();
 
 
-// ==================== EMPLOYEE ====================
+//  EMPLOYEE 
 
 // Apply Leave
 router.post(
@@ -51,7 +50,7 @@ router.delete(
 );
 
 
-// ==================== ADMIN ====================
+// ADMIN 
 
 // Get All Employee Leaves
 router.get(

@@ -1,8 +1,15 @@
-
-import mongoose from "mongoose";
+import mongoose from "mongoose"; 
 
 const employeeSchema = new mongoose.Schema(
   {
+    // Login User connection
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      unique: true
+    },
+
     // Section 1: Basic Information
     fullName: {
       type: String,

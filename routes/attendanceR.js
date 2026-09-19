@@ -17,7 +17,7 @@ import { adminOnly } from "../middleware/role.js";
 const router = express.Router();
 
 
-// =========================
+
 // EMPLOYEE ATTENDANCE
 // =========================
 
@@ -73,7 +73,7 @@ router.get(
 
 // =========================
 // ADMIN ATTENDANCE
-// =========================
+
 
 router.get(
     "/all",
