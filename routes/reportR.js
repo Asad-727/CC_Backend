@@ -1,10 +1,12 @@
-import express from "express";
+
+import express from "express"
 
 import {
     getWorkforceReport,
     getProductivityReport,
     getPayrollReport,
     getAttendanceReport,
+    getLeaveReport,
     getAllReports,
     exportAllReports
 } from "../controllers/reportC.js";
@@ -24,6 +26,9 @@ router.get("/payroll", auth, adminOnly, getPayrollReport);
 
 router.get("/attendance", auth, adminOnly, getAttendanceReport);
 
+router.get("/leave", auth, adminOnly, getLeaveReport);
+
 router.get("/export", auth, adminOnly, exportAllReports);
+
 
 export default router;

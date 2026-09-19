@@ -569,3 +569,81 @@ export const exportAllReports = async (req, res) => {
         });
     }
 };
+
+// Leave Report
+export const getLeaveReport = async (req, res) => {
+    try {
+        const { period, startDate, endDate } = req.query;
+
+        const { start, end } = getDateRange(
+            period,
+            startDate,
+            endDate
+        );
+
+        const leaves = await Leave.find({
+            createdAt: {
+                $gte: start,
+                $lte: end
+            }
+        }).populate(
+            "employee",
+            "username"
+        );
+
+        const totalLeaves = leaves.length;
+
+        const pendingLeaves = leaves.filter(
+            item => item.status === "Pending"
+        ).length;
+
+        const approvedLeaves = leaves.filter(
+            item => item.status === "Approved"
+        ).length;
+
+        const rejectedLeaves = leaves.filter(
+            item => item.status === "Rejected"
+        ).length;
+
+        const totalLeaveDays = leaves.reduce(
+            (total, item) => total + (item.totalDays || 0),
+            0
+        );
+
+        const approvedLeaveDays = leaves
+            .filter(item => item.status === "Approved")
+            .reduce(
+                (total, item) => total + (item.totalDays || 0),
+                0
+            );
+
+        return res.status(200).json({
+            success: true,
+            report: {
+                totalLeaves,
+                pendingLeaves,
+                approvedLeaves,
+                rejectedLeaves,
+                totalLeaveDays,
+                approvedLeaveDays,
+                records: leaves.map(item => ({
+                    employee: item.employee?.username || "",
+                    leaveType: item.leaveType,
+                    totalDays: item.totalDays,
+                    fromDate: item.fromDate,
+                    toDate: item.toDate,
+                    reason: item.reason,
+                    status: item.status,
+                    appliedDate: item.appliedDate
+                }))
+            }
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Failed to generate leave report",
+            error: error.message
+        });
+    }
+};

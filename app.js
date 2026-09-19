@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 
+import adminSetupR from "./routes/adminSetupR.js";
+
 import loginRouter from "./routes/loginR.js";
 import  dashboardRouter from "./routes/dashboardR.js";
 import leaveR from "./routes/leaveR.js";
@@ -24,6 +26,10 @@ app.get("/", (req, res)=>{
         message: "Coded Clouds Backend is running"
     });
 });
+
+// for first time admin create
+app.use("/api/admin-setup", adminSetupR);
+
 
 app.use("/api/auth", loginRouter);
 app.use("/api/dashboard", dashboardRouter);
